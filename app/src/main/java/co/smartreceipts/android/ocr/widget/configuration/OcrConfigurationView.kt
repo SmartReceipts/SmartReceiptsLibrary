@@ -48,9 +48,9 @@ interface OcrConfigurationView {
     fun present(emailAddress: EmailAddress?)
 
     /**
-     * Presents the current user's remaining scans
+     * Presents the current user's remaining scans if logged in
      */
-    fun present(remainingScans: Int)
+    fun present(remainingScans: Int, isUserLoggedIn: Boolean)
 
     /**
      * Presents the list of available purchases for this user
