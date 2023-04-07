@@ -88,7 +88,7 @@ public class OcrConfigurationPresenterTest {
         verify(interactor).setAllowUsToSaveImagesRemotely(SAVE_IMAGES_REMOTELY);
 
         // Presents Remaining Scans
-        verify(view).present(REMAINING_SCANS);
+        verify(view).present(REMAINING_SCANS, interactor.isUserLoggedIn());
 
         // Presents Available purchases
         verify(view).present(Collections.singletonList(availablePurchaseSkuDetails));
