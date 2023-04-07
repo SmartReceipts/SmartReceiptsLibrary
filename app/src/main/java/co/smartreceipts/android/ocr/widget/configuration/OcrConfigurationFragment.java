@@ -98,6 +98,7 @@ public class OcrConfigurationFragment extends Fragment implements OcrConfigurati
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = OcrConfigurationFragmentBinding.inflate(inflater, container, false);
+        binding.loginButton.setOnClickListener(view -> router.navigateToLoginScreen());
 
         this.ocrPurchasesListAdapter = new OcrPurchasesListAdapter();
         binding.purchasesList.setAdapter(this.ocrPurchasesListAdapter);
@@ -115,9 +116,9 @@ public class OcrConfigurationFragment extends Fragment implements OcrConfigurati
         final Toolbar toolbar;
         if (navigationHandler.isDualPane()) {
             toolbar = getActivity().findViewById(R.id.toolbar);
-            binding.toolbar.toolbar.setVisibility(View.GONE);
+            binding.toolbar.setVisibility(View.GONE);
         } else {
-            toolbar = binding.toolbar.toolbar;
+            toolbar = binding.toolbar;
         }
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
     }
@@ -177,10 +178,18 @@ public class OcrConfigurationFragment extends Fragment implements OcrConfigurati
     }
 
     @Override
-    public void present(int remainingScans) {
+    public void present(int remainingScans, boolean isUserLoggedIn) {
         final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setTitle(getContext().getString(R.string.ocr_configuration_scans_remaining, remainingScans));
+            if (isUserLoggedIn)
+            {
+                actionBar.setTitle(getContext().getString(R.string.ocr_configuration_scans_remaining, remainingScans));
+                binding.loginButton.setVisibility(View.GONE);
+            }
+            else {
+                actionBar.setTitle("");
+                binding.loginButton.setVisibility(View.VISIBLE);
+            }
         }
     }
 
