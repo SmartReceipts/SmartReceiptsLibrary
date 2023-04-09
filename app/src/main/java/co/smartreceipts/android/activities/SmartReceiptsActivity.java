@@ -50,6 +50,7 @@ import co.smartreceipts.android.settings.catalog.UserPreference;
 import co.smartreceipts.android.sync.BackupProvidersManager;
 import co.smartreceipts.android.utils.ConfigurableResourceFeature;
 import co.smartreceipts.analytics.log.Logger;
+import co.smartreceipts.core.identity.IdentityManager;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -103,6 +104,9 @@ public class SmartReceiptsActivity extends AppCompatActivity implements HasAndro
 
     @Inject
     ThemeProvider themeProvider;
+
+    @Inject
+    IdentityManager identityManager;
 
     private volatile Set<InAppPurchase> availablePurchases;
     private CompositeDisposable compositeDisposable;
@@ -252,8 +256,11 @@ public class SmartReceiptsActivity extends AppCompatActivity implements HasAndro
                 analytics.record(Events.Navigation.SmartReceiptsPlusOverflow);
                 return true;
             case R.id.menu_main_ocr_configuration:
-                navigationHandler.navigateToOcrConfigurationFragment();
-                analytics.record(Events.Navigation.OcrConfiguration);
+                if(identityManager.isLoggedIn()) {
+                    navigationHandler.navigateToOcrConfigurationFragment();
+                    analytics.record(Events.Navigation.OcrConfiguration);
+                }
+                else navigationHandler.navigateToLoginScreen();
                 return true;
             case R.id.menu_main_usage_guide:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.smartreceipts.co/guide")));

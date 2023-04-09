@@ -15,6 +15,7 @@ import co.smartreceipts.android.tooltip.model.TooltipMetadata
 import co.smartreceipts.android.tooltip.model.TooltipType
 import co.smartreceipts.android.utils.rx.RxSchedulers
 import co.smartreceipts.core.di.scopes.FragmentScope
+import co.smartreceipts.core.identity.IdentityManager
 import com.hadisatrio.optional.Optional
 import io.reactivex.Completable
 import io.reactivex.Scheduler
@@ -34,6 +35,7 @@ class OcrInformationTooltipController @Inject constructor(private val context: C
                                                           private val interactor: OcrInformationalTooltipInteractor,
                                                           private val ocrPurchaseTracker: OcrPurchaseTracker,
                                                           private val analytics: Analytics,
+                                                          private val identityManager: IdentityManager,
                                                           @Named(RxSchedulers.IO) private val scheduler: Scheduler) : TooltipController {
 
     @UiThread
@@ -68,7 +70,9 @@ class OcrInformationTooltipController @Inject constructor(private val context: C
         return Consumer {
             tooltipView.hideTooltip()
             if (it == TooltipInteraction.TooltipClick) {
+                if(identityManager.isLoggedIn)
                 router.navigateToOcrConfigurationScreen()
+                else router.navigationHandler.navigateToLoginScreen()
             }
         }
     }

@@ -44,6 +44,8 @@ class AccountRouter @Inject constructor(
     }
 
     fun navigateToOcrFragment() {
+        if(identityManager.isLoggedIn)
         navigationHandler.navigateToOcrConfigurationFragment()
+        else navigationHandler.navigateToLoginScreen()
     }
 }

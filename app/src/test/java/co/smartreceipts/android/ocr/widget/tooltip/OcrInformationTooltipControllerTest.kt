@@ -10,6 +10,7 @@ import co.smartreceipts.android.tooltip.TooltipView
 import co.smartreceipts.android.tooltip.model.TooltipInteraction
 import co.smartreceipts.android.tooltip.model.TooltipMetadata
 import co.smartreceipts.android.tooltip.model.TooltipType
+import co.smartreceipts.core.identity.IdentityManager
 import com.hadisatrio.optional.Optional
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.verifyZeroInteractions
@@ -51,12 +52,15 @@ class OcrInformationTooltipControllerTest {
     @Mock
     private lateinit var analytics: Analytics
 
+    @Mock
+    private lateinit var identityManager: IdentityManager
+
     private val scheduler = Schedulers.trampoline()
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        ocrInformationTooltipController = OcrInformationTooltipController(context, tooltipView, router, interactor, ocrPurchaseTracker, analytics, scheduler)
+        ocrInformationTooltipController = OcrInformationTooltipController(context, tooltipView, router, interactor, ocrPurchaseTracker, analytics, identityManager, scheduler)
     }
 
     @Test
