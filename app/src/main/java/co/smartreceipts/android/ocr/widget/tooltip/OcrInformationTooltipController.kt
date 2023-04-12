@@ -72,7 +72,7 @@ class OcrInformationTooltipController @Inject constructor(private val context: C
             if (it == TooltipInteraction.TooltipClick) {
                 if(identityManager.isLoggedIn)
                 router.navigateToOcrConfigurationScreen()
-                else router.navigationHandler.navigateToLoginScreen()
+                else router.navigationHandler.navigateToLoginScreen(true)
             }
         }
     }

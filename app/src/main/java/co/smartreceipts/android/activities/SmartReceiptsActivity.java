@@ -260,7 +260,9 @@ public class SmartReceiptsActivity extends AppCompatActivity implements HasAndro
                     navigationHandler.navigateToOcrConfigurationFragment();
                     analytics.record(Events.Navigation.OcrConfiguration);
                 }
-                else navigationHandler.navigateToLoginScreen();
+                else {
+                    navigationHandler.navigateToLoginScreen(true);
+                }
                 return true;
             case R.id.menu_main_usage_guide:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.smartreceipts.co/guide")));

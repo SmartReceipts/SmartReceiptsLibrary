@@ -183,6 +183,14 @@ public class NavigationHandler<T extends FragmentActivity> {
         }
     }
 
+    public void navigateToLoginScreen(Boolean isFromOcr) {
+        if (isDualPane) {
+            replaceFragment(fragmentProvider.newLoginFragment(isFromOcr), R.id.content_details);
+        } else {
+            replaceFragment(fragmentProvider.newLoginFragment(isFromOcr), R.id.content_list);
+        }
+    }
+
     public void navigateToAccountScreen() {
         if (isDualPane) {
             replaceFragment(fragmentProvider.newAccountFragment(), R.id.content_details);

@@ -125,8 +125,10 @@ class FragmentProvider @Inject constructor() {
      *
      * @return a new instance of this fragment
      */
-    fun newLoginFragment(): LoginFragment {
-        return LoginFragment.newInstance()
+    @JvmOverloads fun newLoginFragment(isFromOcr:Boolean = false): LoginFragment {
+        val args = Bundle()
+        args.putBoolean(LoginFragment.IS_FROM_OCR,isFromOcr)
+        return attachArguments(LoginFragment.newInstance(), args)
     }
 
     /**

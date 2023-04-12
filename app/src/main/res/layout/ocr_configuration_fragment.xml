@@ -18,14 +18,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_button"
-            style="@style/Widget.MaterialComponents.Button"
+            android:id="@+id/logout_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="#ffffff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone"
+            android:layout_gravity="end"
+            android:visibility="visible"
             android:padding="@dimen/padding_large"
-            android:text="@string/login_button_text"/>
+            android:text="@string/logout_button_text"/>
 
     </com.google.android.material.appbar.MaterialToolbar>
 

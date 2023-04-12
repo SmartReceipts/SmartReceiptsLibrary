@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.android.billingclient.api.SkuDetails;
+import com.jakewharton.rxbinding3.view.RxView;
 import com.jakewharton.rxbinding3.widget.RxCompoundButton;
 
 import org.jetbrains.annotations.NotNull;
@@ -38,6 +39,7 @@ import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.subjects.PublishSubject;
+import kotlin.Unit;
 
 public class OcrConfigurationFragment extends Fragment implements OcrConfigurationView {
 
@@ -98,8 +100,7 @@ public class OcrConfigurationFragment extends Fragment implements OcrConfigurati
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = OcrConfigurationFragmentBinding.inflate(inflater, container, false);
-        binding.loginButton.setOnClickListener(view -> router.navigateToLoginScreen());
-
+        logoutButtonClicks = RxView.clicks(binding.logoutButton).map(__ -> Unit.INSTANCE);
         this.ocrPurchasesListAdapter = new OcrPurchasesListAdapter();
         binding.purchasesList.setAdapter(this.ocrPurchasesListAdapter);
 
@@ -184,11 +185,7 @@ public class OcrConfigurationFragment extends Fragment implements OcrConfigurati
             if (isUserLoggedIn)
             {
                 actionBar.setTitle(getContext().getString(R.string.ocr_configuration_scans_remaining, remainingScans));
-                binding.loginButton.setVisibility(View.GONE);
-            }
-            else {
-                actionBar.setTitle("");
-                binding.loginButton.setVisibility(View.VISIBLE);
+                binding.logoutButton.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -239,5 +236,17 @@ public class OcrConfigurationFragment extends Fragment implements OcrConfigurati
     @Override
     public Observable<String> getDelayedPurchaseIdStream() {
         return delayedPurchaseIdSubject;
+    }
+
+    @Override
+    public void navigateToLoginScreen() {
+        getParentFragmentManager().popBackStack();
+        router.navigateToLoginScreen();
+    }
+
+    private Observable<Unit> logoutButtonClicks;
+    @Override
+    public Observable<Unit> getLogoutButtonClicks() {
+        return logoutButtonClicks;
     }
 }

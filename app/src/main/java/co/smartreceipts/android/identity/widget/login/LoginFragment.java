@@ -49,6 +49,8 @@ public class LoginFragment extends Fragment implements LoginView {
     @Inject
     NavigationHandler navigationHandler;
 
+    public static final String IS_FROM_OCR = "is_from_ocr";
+
     private TextView loginFieldsHintMessage;
     private EditText emailInput;
     private EditText passwordInput;
@@ -169,6 +171,9 @@ public class LoginFragment extends Fragment implements LoginView {
         }
         if (uiIndicator.getState() == UiIndicator.State.Success) {
             router.navigateBack();
+            if(getArguments().getBoolean(IS_FROM_OCR)) {
+                router.navigationHandler.navigateToOcrConfigurationFragment();
+            }
         }
     }
 

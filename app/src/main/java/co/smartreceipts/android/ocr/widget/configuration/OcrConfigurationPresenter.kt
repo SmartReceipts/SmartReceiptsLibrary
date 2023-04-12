@@ -39,6 +39,12 @@ constructor(view: OcrConfigurationView, interactor: OcrConfigurationInteractor) 
             .subscribe { view.present(it, interactor.isUserLoggedIn) }
         )
 
+        compositeDisposable.add(
+            view.logoutButtonClicks
+                .doOnNext { interactor.logOut() }
+                .subscribe { view.navigateToLoginScreen() }
+        )
+
         // Show available purchases list
         compositeDisposable.add(interactor.getAvailableOcrPurchases()
             .doOnSuccess { Logger.info(this, "Presenting list of purchases: {}.", it) }

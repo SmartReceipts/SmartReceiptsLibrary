@@ -89,6 +89,8 @@ class OcrConfigurationInteractor @Inject constructor(
         purchaseManager.initiatePurchase(skuDetails, PurchaseSource.Ocr)
     }
 
+    fun logOut() = identityManager.logOut()
+
     fun setOcrIsEnabled(ocrIsEnabled: Boolean) {
         analytics.record(
             DefaultDataPointEvent(Events.Ocr.OcrIsEnabledToggled).addDataPoint(
