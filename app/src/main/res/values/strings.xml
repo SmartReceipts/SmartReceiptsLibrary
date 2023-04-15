@@ -109,6 +109,7 @@
     <string name="ocr_status_message_performing_scan">Scanning for Receipt Metadata&#8230;</string>
     <string name="ocr_status_message_fetching_results">Fetching Results&#8230;</string>
     <string name="ocr_configuration_scans_remaining">OCR Scans Remaining: %d</string>
+    <string name="configuration_scans_remaining">Scans Remaining: %d</string>
     <string name="ocr_configuration_my_account">%s</string>
     <string name="ocr_configuration_welcome">Automatic Scans (OCR):</string>
     <string name="ocr_configuration_information">Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos.</string>

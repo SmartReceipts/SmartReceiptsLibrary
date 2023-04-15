@@ -184,7 +184,7 @@ public class OcrConfigurationFragment extends Fragment implements OcrConfigurati
         if (actionBar != null) {
             if (isUserLoggedIn)
             {
-                actionBar.setTitle(getContext().getString(R.string.ocr_configuration_scans_remaining, remainingScans));
+                actionBar.setTitle(getContext().getString(R.string.configuration_scans_remaining, remainingScans));
                 binding.logoutButton.setVisibility(View.VISIBLE);
             }
         }
