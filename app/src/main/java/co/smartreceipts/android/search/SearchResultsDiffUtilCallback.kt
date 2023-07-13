@@ -3,7 +3,7 @@ package co.smartreceipts.android.search
 import androidx.recyclerview.widget.DiffUtil
 import co.smartreceipts.android.model.Receipt
 import co.smartreceipts.android.model.Trip
-import co.smartreceipts.android.search.delegates.HeaderItem
+import co.smartreceipts.android.search.viewholders.HeaderItem
 
 class SearchResultsDiffUtilCallback : DiffUtil.ItemCallback<Any>() {
 

@@ -11,9 +11,10 @@ import androidx.transition.TransitionManager
 import co.smartreceipts.android.R
 import co.smartreceipts.android.databinding.ActivitySearchBinding
 import co.smartreceipts.android.date.DateFormatter
+import co.smartreceipts.android.images.RoundedTransformation
 import co.smartreceipts.android.model.Receipt
 import co.smartreceipts.android.model.Trip
-import co.smartreceipts.android.search.delegates.HeaderItem
+import co.smartreceipts.android.search.viewholders.HeaderItem
 import co.smartreceipts.android.sync.BackupProvidersManager
 import com.jakewharton.rxbinding3.appcompat.queryTextChanges
 import dagger.android.AndroidInjection
@@ -40,7 +41,7 @@ class SearchActivity : AppCompatActivity(), SearchView {
     @Inject
     lateinit var backupProvidersManager: BackupProvidersManager
 
-    private lateinit var adapter: SearchResultsDelegationAdapter
+    private lateinit var adapter: SearchResultsAdapter
 
     private lateinit var binding: ActivitySearchBinding
 
@@ -55,11 +56,16 @@ class SearchActivity : AppCompatActivity(), SearchView {
         // sets the focus and opens the keyboard
         binding.searchView.isIconified = false
 
-        adapter = SearchResultsDelegationAdapter(
-            { navigateToTrip(it) },
-            { navigateToReceipt(it) },
-            dateFormatter,
-            backupProvidersManager.syncProvider
+        adapter = SearchResultsAdapter(
+            transformation = RoundedTransformation(),
+            dateFormatter = dateFormatter,
+            syncProvider = backupProvidersManager.syncProvider,
+            tripClickListener = {
+                navigateToTrip(it)
+            },
+            receiptClickListener = {
+                navigateToReceipt(it)
+            }
         )
 
         // despite the fact that getItemId is not implemented, this code fixes
@@ -104,14 +110,20 @@ class SearchActivity : AppCompatActivity(), SearchView {
     }
 
     override fun presentSearchResults(searchResults: SearchInteractor.SearchResults) {
-        TransitionManager.beginDelayedTransition(binding.container, AutoTransition().setDuration(100))
+        val results: MutableList<Any> = arrayListOf()
+
+        TransitionManager.beginDelayedTransition(
+            binding.container,
+            AutoTransition().setDuration(100)
+        )
 
         binding.apply {
             if (searchResults.isEmpty()) {
                 resultsList.visibility = View.GONE
 
                 searchHint.visibility = if (searchView.query.isEmpty()) View.VISIBLE else View.GONE
-                noResultsText.visibility = if (searchView.query.isNotEmpty()) View.VISIBLE else View.GONE
+                noResultsText.visibility =
+                    if (searchView.query.isNotEmpty()) View.VISIBLE else View.GONE
 
             } else {
                 resultsList.visibility = View.VISIBLE
@@ -120,7 +132,6 @@ class SearchActivity : AppCompatActivity(), SearchView {
             }
         }
 
-        val results: MutableList<Any> = arrayListOf()
         if (searchResults.trips.isNotEmpty()) {
             results.add(HeaderItem(getString(R.string.reports_title)))
             results.addAll(searchResults.trips)
@@ -129,8 +140,8 @@ class SearchActivity : AppCompatActivity(), SearchView {
             results.add(HeaderItem(getString(R.string.report_info_receipts)))
             results.addAll(searchResults.receipts)
         }
-        adapter.items = results
-        adapter.notifyDataSetChanged()
+
+        adapter.submitList(results)
     }
 
     private fun navigateToTrip(trip: Trip) {
