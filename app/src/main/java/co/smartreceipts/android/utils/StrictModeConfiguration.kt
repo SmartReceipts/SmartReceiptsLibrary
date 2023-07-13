@@ -46,7 +46,11 @@ object StrictModeConfiguration {
                 var hasBridgingQuery = false
                 var hasEmailAttachments = false
                 var hasLeakCanary = false
+                var isTestRunning = false
                 stackTrace.forEach { stackTraceElement ->
+                    if (stackTraceElement.toString().contains("androidx.test.runner")) {
+                        isTestRunning = true
+                    }
                     if (stackTraceElement.toString().contains("LayoutInflater.createView")) {
                         hasInflationTraceElement = true
                     }
@@ -73,7 +77,7 @@ object StrictModeConfiguration {
                 val isWhiteListed = (hasInflationTraceElement and hasDexTraceElement) or
                         hasDexTraceElement or hasPreferenceManagerInflation or
                         hasPreferenceReadWrite or hasBridgingQuery or hasEmailAttachments or
-                        hasLeakCanary
+                        hasLeakCanary or isTestRunning
                 if (!isWhiteListed) {
                     throw it
                 } else {

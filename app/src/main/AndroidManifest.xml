@@ -160,6 +160,14 @@
         <activity android:name=".subscriptions.SubscriptionsActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+            android:label="InstrumentationActivityInvoker$BootstrapActivity" />
+
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+            android:label="InstrumentationActivityInvoker$BootstrapActivity" />
+
         <!-- FirebaseMessagingService performs security checks at runtime, no need for explicit permissions despite exported="true" -->
         <service
             android:name="co.smartreceipts.push.services.MyFirebaseMessagingService"
