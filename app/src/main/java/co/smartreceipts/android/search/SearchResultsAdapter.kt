@@ -54,8 +54,8 @@ class SearchResultsAdapter(
     }
 
     companion object {
-        private const val TYPE_HEADER = 1
-        private const val TYPE_RECEIPT = 0
-        private const val TYPE_TRIP = 1
+        private const val TYPE_HEADER = 0
+        private const val TYPE_RECEIPT = 1
+        private const val TYPE_TRIP = 2
     }
 }
