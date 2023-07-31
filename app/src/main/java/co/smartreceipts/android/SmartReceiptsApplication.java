@@ -137,9 +137,9 @@ public class SmartReceiptsApplication extends Application implements HasAndroidI
     public void onCreate() {
         super.onCreate();
 
-        if (BuildConfig.DEBUG) {
-            StrictModeConfiguration.enable();
-        }
+         if (BuildConfig.DEBUG) {
+             StrictModeConfiguration.enable();
+         }
 
         appComponent = DaggerAppComponent.builder()
                 .baseAppModule(new BaseAppModule(this))

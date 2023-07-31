@@ -18,8 +18,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2740
-        versionName "4.25.1.2740"
+        versionCode 3000
+        versionName "4.26.0.3000"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
@@ -78,7 +78,7 @@ android {
 
 
     dexOptions {
-        javaMaxHeapSize "2048M"
+        javaMaxHeapSize "3072M"
     }
 
     flavorDimensions "versionType"

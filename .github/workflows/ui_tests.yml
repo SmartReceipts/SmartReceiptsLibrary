@@ -1,0 +1,48 @@
+name: Android CI - UI Tests
+
+on:
+  workflow_call:
+
+jobs:
+  UI-Tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v1'
+      with:
+        version: '>= 363.0.0'
+    - name: Import GPG key
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        gpg_private_key: ${{ secrets.GPG_KEY }}
+
+    - name: Decrypt secrets
+      run: |
+        gpg --decrypt secrets.tar.gpg > secrets.tar
+        tar -vxf secrets.tar
+        rm secrets.tar
+    - name: Authorize gcloud and set config defaults
+      run: |
+        sudo gcloud auth activate-service-account --key-file=test_lab_account_key.json
+        sudo gcloud --quiet config set project smart-receipts
+    - name: Build debug and test APKs for Plus variant
+      run: |
+        rm -fr ~/.gradle/daemon/
+        ./gradlew :app:assemblePlusFlavorDebug
+        ./gradlew :app:assemblePlusFlavorDebugAndroidTest
+    - name: Test Plus Variant with Firebase Test Lab
+      run: >
+        sudo gcloud firebase test android run \
+          --app app/build/outputs/apk/plusFlavor/debug/app-plusFlavor-debug.apk \
+          --test app/build/outputs/apk/androidTest/plusFlavor/debug/app-plusFlavor-debug-androidTest.apk \
+          --device model=oriole,version=33 \
+          --environment-variables clearPackageData=true,listener=co.smartreceipts.android.test.runner.CrashingRunListener \
+          --use-orchestrator \
+          --results-bucket cloud-test-smart-receipts-plus
