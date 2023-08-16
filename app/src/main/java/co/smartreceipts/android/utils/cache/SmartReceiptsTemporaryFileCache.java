@@ -1,19 +1,20 @@
 package co.smartreceipts.android.utils.cache;
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 
 import com.google.common.base.Preconditions;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-import co.smartreceipts.core.di.scopes.ApplicationScope;
 import co.smartreceipts.analytics.log.Logger;
+import co.smartreceipts.core.di.scopes.ApplicationScope;
 import wb.android.storage.StorageManager;
 
 /**
@@ -28,14 +29,12 @@ public class SmartReceiptsTemporaryFileCache {
     private final Context context;
     private final StorageManager storageManager;
     private final File internalTemporaryCacheFolder;
-    private final File externalTemporaryCacheFolder;
 
     @Inject
     public SmartReceiptsTemporaryFileCache(@NonNull Context context) {
         this.context = Preconditions.checkNotNull(context.getApplicationContext());
         this.storageManager = StorageManager.getInstance(context);
         this.internalTemporaryCacheFolder = new File(Preconditions.checkNotNull(context.getCacheDir()), FOLDER_NAME);
-        this.externalTemporaryCacheFolder = Preconditions.checkNotNull(context.getExternalCacheDir());
     }
 
     /**
@@ -49,21 +48,10 @@ public class SmartReceiptsTemporaryFileCache {
         return new File(internalTemporaryCacheFolder, filename);
     }
 
-    /**
-     * Returns a file in the <b>external</b> cache folder
-     *
-     * @param filename the name of the file
-     * @return the a {@link File}
-     */
-    @NonNull
-    public File getExternalCacheFile(@NonNull String filename) {
-        return new File(externalTemporaryCacheFolder, filename);
-    }
-
     public void resetCache() {
         Logger.info(SmartReceiptsTemporaryFileCache.this, "Clearing the cached dir");
         Executors.newSingleThreadExecutor().execute(() -> {
-            for (final File cacheDir : Arrays.asList(internalTemporaryCacheFolder, externalTemporaryCacheFolder)) {
+            for (final File cacheDir : Collections.singletonList(internalTemporaryCacheFolder)) {
                 //noinspection ResultOfMethodCallIgnored
                 cacheDir.mkdirs();
                 final File[] files = cacheDir.listFiles();

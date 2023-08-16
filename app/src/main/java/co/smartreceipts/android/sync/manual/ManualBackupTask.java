@@ -101,14 +101,15 @@ public class ManualBackupTask {
 
             // Finish
             File zip = external.zipBuffered(8192, new BackupFileFilter());
-            File backupFile = smartReceiptsTemporaryFileCacheLazy.get().getExternalCacheFile(EXPORT_FILENAME);
+            File backupFile = smartReceiptsTemporaryFileCacheLazy.get().getInternalCacheFile(EXPORT_FILENAME);
+            boolean copyBackup = external.copy(zip, backupFile, true);
+            external.delete(zip);
 
-            if (zip.renameTo(backupFile)) {
+            if (copyBackup) {
                 return backupFile;
             } else {
-                throw new IOException("Failed to rename the backup file to: " + backupFile.getAbsolutePath());
+                throw new IOException("Failed to copy the backup file to: " + backupFile.getAbsolutePath());
             }
-
         });
     }
 
