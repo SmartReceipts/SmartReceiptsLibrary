@@ -2,7 +2,7 @@ package co.smartreceipts.android.subscriptions
 
 import co.smartreceipts.android.purchases.model.InAppPurchase
 import co.smartreceipts.core.identity.IdentityManager
-import com.android.billingclient.api.SkuDetails
+import com.android.billingclient.api.ProductDetails
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.verify
@@ -24,8 +24,8 @@ class SubscriptionsPresenterTest {
     private val interactor = mock<SubscriptionsInteractor>()
     private val identityManager = mock<IdentityManager>()
 
-    private val standardSkuDetails = mock<SkuDetails>()
-    private val premiumSkuDetails = mock<SkuDetails>()
+    private val standardSkuDetails = mock<ProductDetails>()
+    private val premiumSkuDetails = mock<ProductDetails>()
 
     companion object {
         const val STANDARD_PRICE = "50"
@@ -44,10 +44,10 @@ class SubscriptionsPresenterTest {
             Single.just(mapOf(Pair(standardSkuDetails, true), Pair(premiumSkuDetails, false)))
         )
 
-        whenever(standardSkuDetails.price).thenReturn(STANDARD_PRICE)
-        whenever(standardSkuDetails.sku).thenReturn(InAppPurchase.StandardSubscriptionPlan.sku)
-        whenever(premiumSkuDetails.price).thenReturn(PREMIUM_PRICE)
-        whenever(premiumSkuDetails.sku).thenReturn(InAppPurchase.PremiumSubscriptionPlan.sku)
+        whenever(standardSkuDetails.subscriptionOfferDetails?.firstOrNull()?.pricingPhases?.pricingPhaseList?.firstOrNull()?.formattedPrice).thenReturn(STANDARD_PRICE)
+        whenever(standardSkuDetails.name).thenReturn(InAppPurchase.StandardSubscriptionPlan.sku)
+        whenever(premiumSkuDetails.subscriptionOfferDetails?.firstOrNull()?.pricingPhases?.pricingPhaseList?.firstOrNull()?.formattedPrice).thenReturn(PREMIUM_PRICE)
+        whenever(premiumSkuDetails.name).thenReturn(InAppPurchase.PremiumSubscriptionPlan.sku)
 
 
         presenter = SubscriptionsPresenter(view, interactor, identityManager)

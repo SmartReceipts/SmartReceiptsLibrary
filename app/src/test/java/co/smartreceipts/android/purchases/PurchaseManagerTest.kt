@@ -7,7 +7,7 @@ import co.smartreceipts.analytics.Analytics
 import co.smartreceipts.android.purchases.model.InAppPurchase
 import co.smartreceipts.android.purchases.model.ManagedProduct
 import co.smartreceipts.android.purchases.source.PurchaseSource
-import com.android.billingclient.api.SkuDetails
+import com.android.billingclient.api.ProductDetails
 import com.nhaarman.mockitokotlin2.*
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -27,8 +27,8 @@ class PurchaseManagerTest {
     private val analytics = mock<Analytics>()
 
     private val ownedProduct = mock<ManagedProduct>()
-    private val skuOcr10 = mock<SkuDetails>()
-    private val skuOcr50 = mock<SkuDetails>()
+    private val skuOcr10 = mock<ProductDetails>()
+    private val skuOcr50 = mock<ProductDetails>()
 
     private val activity = mock<Activity>()
 
@@ -45,8 +45,8 @@ class PurchaseManagerTest {
         whenever(billiClientManager.initiatePurchase(any(), any())).thenReturn(Completable.complete())
 
 
-        whenever(skuOcr10.sku).thenReturn(InAppPurchase.OcrScans10.sku)
-        whenever(skuOcr50.sku).thenReturn(InAppPurchase.OcrScans50.sku)
+        whenever(skuOcr10.name).thenReturn(InAppPurchase.OcrScans10.sku)
+        whenever(skuOcr50.name).thenReturn(InAppPurchase.OcrScans50.sku)
 
 
         purchaseManager = PurchaseManager(billiClientManager, analytics, Schedulers.trampoline())

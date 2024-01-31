@@ -4,7 +4,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.android.billingclient.api.SkuDetails;
+import com.android.billingclient.api.ProductDetails;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,13 +46,13 @@ public class OcrConfigurationPresenterTest {
     Consumer<Boolean> allowUsToSaveImagesRemotelyConsumer;
 
     @Mock
-    SkuDetails availablePurchaseSkuDetails;
+    ProductDetails availablePurchaseSkuDetails;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        when(availablePurchaseSkuDetails.getSku()).thenReturn(PURCHASE.getSku());
+        when(availablePurchaseSkuDetails.getName()).thenReturn(PURCHASE.getSku());
         when(interactor.getEmail()).thenReturn(emailAddress);
         when(interactor.getOcrIsEnabled()).thenReturn(Observable.just(OCR_IS_ENABLED));
         when(interactor.getAllowUsToSaveImagesRemotely()).thenReturn(Observable.just(SAVE_IMAGES_REMOTELY));

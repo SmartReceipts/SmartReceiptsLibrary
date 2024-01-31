@@ -5,7 +5,7 @@ import co.smartreceipts.android.purchases.PurchaseManager
 import co.smartreceipts.android.purchases.model.InAppPurchase
 import co.smartreceipts.android.purchases.model.ManagedProduct
 import co.smartreceipts.android.purchases.source.PurchaseSource
-import com.android.billingclient.api.SkuDetails
+import com.android.billingclient.api.ProductDetails
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.verify
@@ -25,9 +25,9 @@ class SubscriptionsInteractorTest {
 
     private val purchaseManager = mock<PurchaseManager>()
 
-    private val ocrPurchaseSkuDetails = mock<SkuDetails>()
-    private val standardPlanSkuDetails = mock<SkuDetails>()
-    private val premiumPlanSkuDetails = mock<SkuDetails>()
+    private val ocrPurchaseSkuDetails = mock<ProductDetails>()
+    private val standardPlanSkuDetails = mock<ProductDetails>()
+    private val premiumPlanSkuDetails = mock<ProductDetails>()
 
     private val standardPlanManagedProduct = mock<ManagedProduct>()
 
@@ -35,9 +35,9 @@ class SubscriptionsInteractorTest {
 
     @Before
     fun setUp() {
-        whenever(ocrPurchaseSkuDetails.sku).thenReturn("ocr_purchase_10")
-        whenever(standardPlanSkuDetails.sku).thenReturn("and_autorec_1month")
-        whenever(premiumPlanSkuDetails.sku).thenReturn("and_autorec_pro_1month")
+        whenever(ocrPurchaseSkuDetails.name).thenReturn("ocr_purchase_10")
+        whenever(standardPlanSkuDetails.name).thenReturn("and_autorec_1month")
+        whenever(premiumPlanSkuDetails.name).thenReturn("and_autorec_pro_1month")
 
         whenever(standardPlanManagedProduct.inAppPurchase).thenReturn(InAppPurchase.StandardSubscriptionPlan)
 
