@@ -38,6 +38,8 @@ class PurchaseManagerTest {
     @Before
     fun setUp() {
 
+
+        
         whenever(billiClientManager.queryAllOwnedPurchasesAndSync()).thenReturn(Single.just(setOf(ownedProduct)))
         whenever(billiClientManager.queryAllAvailablePurchases()).thenReturn(Single.just(setOf(skuOcr10, skuOcr50)))
         whenever(billiClientManager.querySkuDetails(InAppPurchase.OcrScans10)).thenReturn(Single.just(skuOcr10))
