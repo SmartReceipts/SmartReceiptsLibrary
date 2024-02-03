@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:paddingTop="@dimen/padding_larger"
-        android:text="Success!"
+        android:text="@string/subscriptions_success_title"
         android:textColor="@color/design_default_color_on_primary"
         android:textSize="@dimen/font_extra_headline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,15 +23,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
-        android:paddingBottom="@dimen/padding_larger"
         android:gravity="center_horizontal"
-        app:layout_constraintWidth_percent="0.63"
-        android:text="The plan was successfully purchased"
+        android:paddingBottom="@dimen/padding_larger"
+        android:text="@string/subscriptions_success_details"
         android:textColor="@color/transparent_white_60"
         android:textSize="@dimen/font_no_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_success" />
+        app:layout_constraintTop_toBottomOf="@id/text_success"
+        app:layout_constraintWidth_percent="0.63" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_continue"
@@ -44,8 +44,8 @@
         android:insetRight="40dp"
         android:insetBottom="0dp"
         android:paddingVertical="@dimen/padding_large"
-        android:text="Continue"
-        android:textColor="@color/text_primary_color"
+        android:text="@string/subscriptions_success_button"
+        android:textColor="@android:color/black"
         app:cornerRadius="@dimen/card_corner_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,6 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:contentDescription="@android:string/cancel"
             android:src="@drawable/ic_round_close_24"
             app:tint="@color/transparent_white_60" />
 
@@ -77,6 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
+        android:importantForAccessibility="no"
         android:paddingVertical="@dimen/padding_large"
         android:src="@drawable/ic_success_composition"
         app:layout_constraintTop_toBottomOf="@id/button_close" />
