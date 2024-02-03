@@ -552,4 +552,8 @@
     <string name="subscriptions_cancel_info">Você pode cancelar seu plano a qualquer momento <u>nas configurações</u></string>
     <string name="subscriptions_your_plan">Seu Plano</string>
 
+    <string name="subscriptions_success_title">Sucesso!</string>
+    <string name="subscriptions_success_details">O plano foi comprado com sucesso</string>
+    <string name="subscriptions_success_button">Continuar</string>
+
 </resources>

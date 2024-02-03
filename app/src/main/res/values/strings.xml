@@ -569,6 +569,10 @@
     <string name="subscriptions_cancel_info">You can cancel your plan at any time <u>in the settings</u></string>
     <string name="subscriptions_your_plan">Your Plan</string>
 
+    <string name="subscriptions_success_title">Success!</string>
+    <string name="subscriptions_success_details">The plan was successfully purchased</string>
+    <string name="subscriptions_success_button">Continue</string>
+
     <!-- ================== Leak Canary ==================== -->
     <string name="leak_canary_test_class_name">co.smartreceipts.android</string>
 

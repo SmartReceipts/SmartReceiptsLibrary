@@ -92,8 +92,8 @@
     <string name="report_header_comment">%s :הערה לדוח</string>
     <string name="report_pdf_generation_error">שגיאה בייצור הדוח</string>
     <string name="report_pdf_error_too_many_columns_title">יותר מדי עמודות</string>
-	<string name="report_pdf_error_too_many_columns_message">.אין מספיק מקום ע״מ להכיל את כל העמודות בדוח. אנא נסה להגביל את מספר העמודות בהגדרות</string>
-	<string name="report_pdf_error_too_many_columns_message_landscape">.אין מספיק מקום ע״מ להכיל את כל העמודות בדוח. אנא נסה להגביל את מספר העמודות בהגדרות או עבור למצב מסך מאוזן</string>
+    <string name="report_pdf_error_too_many_columns_message">.אין מספיק מקום ע״מ להכיל את כל העמודות בדוח. אנא נסה להגביל את מספר העמודות בהגדרות</string>
+    <string name="report_pdf_error_too_many_columns_message_landscape">.אין מספיק מקום ע״מ להכיל את כל העמודות בדוח. אנא נסה להגביל את מספר העמודות בהגדרות או עבור למצב מסך מאוזן</string>
     <string name="report_pdf_error_go_to_settings">עבור להגדרות</string>
     <string name="report_error_memory">שגיאה: אין מספיק זיכרון בכדי להחתים את התמונות. נסה לעצור כמה אפליקציות אחרות ונסה שוב.</string>
     <string name="report_error_undetermined">משהו השתבש בעת יצירת דוחות …</string>
@@ -113,7 +113,7 @@
     <string name="ocr_configuration_scans_remaining">%d :שנותרו (OCR) סריקות אוטומטיות</string>
     <string name="ocr_configuration_my_account">%s</string>
     <string name="ocr_configuration_welcome">(OCR) סריקות אוטומטיות</string>
-	    <string name="ocr_configuration_information">Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos.</string>
+    <string name="ocr_configuration_information">Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos.</string>
     <string name="ocr_configuration_information_line2">We use a combination of Google Vision and Machine Learning to quickly (often in 5 seconds or less) deliver results, which will become increasingly accurate over time. Since these services have a per-usage charge, we will charge for each receipt scan below.</string>
     <string name="ocr_is_enabled">\?(OCR) הפעל סריקות אוטומטיות</string>
     <string name="ocr_save_scans_to_improve_results">\?אפשר לנו לשמור תמונות על מנת לשפר את התוצאות</string>
@@ -186,8 +186,8 @@
     <string name="SD_WARNING">אזהרה: כרטיס הזכרון שלך לא זמין או מחובר למחשב שלך. חלק מהתמונות עלולות להיות בלתי נגישות. מחליף לזכרון פנימי&#8230;</string>
     <string name="database_error">תקלה: שמירת קבלה נכשלה</string>
     <string name="database_get_error">.תקלה: בלתי אפשרי לגשת למידע שלך. אנא הפעל מחדש את האפליקציה</string>
-	    <string name="IMG_OPEN_ERROR">.תקלה: התמונה כרגע בלתי נגישה או פגומה. כרטיס הזכרון שלך עלול להיות בלתי זמין או מחובר למחשב שלך. אם הוא לא, אנא לחץ על כפתור התפריט על מנת לצלם את התמונה מחדש.</string>
-	    <string name="IMG_SAVE_ERROR">תקלה: התמונה לא נשמרה כראוי</string>
+    <string name="IMG_OPEN_ERROR">.תקלה: התמונה כרגע בלתי נגישה או פגומה. כרטיס הזכרון שלך עלול להיות בלתי זמין או מחובר למחשב שלך. אם הוא לא, אנא לחץ על כפתור התפריט על מנת לצלם את התמונה מחדש.</string>
+    <string name="IMG_SAVE_ERROR">תקלה: התמונה לא נשמרה כראוי</string>
     <string name="FILE_SAVE_ERROR">תקלה: הקובץ לא נשמר כראוי</string>
     <string name="ILLEGAL_CHAR_ERROR">תקלה: שם הקובץ מכיל תו בלתי חורי</string>
     <string name="SPACE_ERROR">תקלה: השם לא יכול להתחיל עם רווח</string>
@@ -215,15 +215,15 @@
     <string name="toast_attachment_error">Unable to attach this file.</string>
 
     <!-- ================== Trip Adapter ===================== -->
-	<string name="trip_no_data">אין לך דוחות מוגדרים כרגע. נסה ללחוץ על + על מנת להתחיל.</string>
-	
+    <string name="trip_no_data">אין לך דוחות מוגדרים כרגע. נסה ללחוץ על + על מנת להתחיל.</string>
+
 
     <!-- ================= Receipt Adapter =================== -->
     <string name="receipt_no_data">נראה שאין לך קבלות. לחץ על + על מנת להתחיל.&#8230;</string>
-	
+
 
     <!-- ================= Distance Adapter ================== -->
-	<string name="distance_no_data">לא תיעדת מרחק עדיין. נסה ללחוץ על + על מנת להתחיל.</string>
+    <string name="distance_no_data">לא תיעדת מרחק עדיין. נסה ללחוץ על + על מנת להתחיל.</string>
     <string name="distance_insert_failed">תקלה: יצירת פריט המרחק נכשלה. אנא וודא שהמכשיר שלך לא מחובר למחשב.</string>
     <string name="distance_update_failed">תקלה: עדכון פריט המרחק נכשל. אנא וודא שהמכשיר שלך לא מחובר למחשב.</string>
     <string name="distance_delete_failed">תקלה: מחיקת פירט המרחק נכשלה. אנא וודא שהמכשיר שלך לא מחובר למחשב.</string>
@@ -331,7 +331,7 @@
     <!-- ===================== backup menu ======================== -->
     <string name="backups">גיבויים</string>
     <string name="manual_backup_title">גיבויים ידניים:</string>
-	<string name="manual_backup_description">גבה את המידע שלך על מנת לשמור על הקבולות שלך. אתה יכול לשחזר את המידע שלך על ידי ייבוא של קובץ הגיבוי, שנוצר על ידי כפתור ״\"גיבוי\" למטה.</string>
+    <string name="manual_backup_description">גבה את המידע שלך על מנת לשמור על הקבולות שלך. אתה יכול לשחזר את המידע שלך על ידי ייבוא של קובץ הגיבוי, שנוצר על ידי כפתור ״\"גיבוי\" למטה.</string>
     <string name="manual_backup_export">גיבוי</string>
     <string name="manual_backup_import">ייבוא</string>
     <string name="auto_backup_title">:גיבוי אוטומטי (ביטא)</string>
@@ -463,7 +463,7 @@
     <string name="error_no_pdf_activity_viewer">לא קיימת אפליקציה לצפייה בקבצי PDF</string>
     <string name="error_no_send_intent_dialog_title">לא קיימת אפליקציה לשליחה</string>
     <string name="error_no_send_intent_dialog_message">לא יכולנו למצוא אפליקציה של דואר אלקטרוני (או אפליקציה דומה) על מכשיר הטלפון שלך. תוכל למצוא את הקבצים בתיקייה הבאה: %s</string>
-	<string name="error_no_file_intent_dialog_title">שגיאה: לא נמצאה אפליקצית גיבוי על הטלפון שלך</string>
+    <string name="error_no_file_intent_dialog_title">שגיאה: לא נמצאה אפליקצית גיבוי על הטלפון שלך</string>
     <string name="error_no_wifi">שגיאה: לא מחובר לווייפיי</string>
 
     <!-- ================== ActionBar ===================== -->
@@ -566,5 +566,9 @@
     <string name="subscriptions_per_month">לחודש</string>
     <string name="subscriptions_cancel_info">ניתן לבטל את התוכנית שלך בכל עת <u>בהגדרות</u></string>
     <string name="subscriptions_your_plan">התוכנית שלך</string>
+
+    <string name="subscriptions_success_title">הצלחה!</string>
+    <string name="subscriptions_success_details">התוכנית נרכשה בהצלחה</string>
+    <string name="subscriptions_success_button">המשך</string>
 
 </resources>

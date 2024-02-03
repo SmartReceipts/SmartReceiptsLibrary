@@ -554,5 +554,9 @@
     <string name="subscriptions_cancel_info">Ви можете скасувати свій план в будь-який момент <u>в налаштуваннях</u></string>
     <string name="subscriptions_your_plan">Ваш план</string>
 
+    <string name="subscriptions_success_title">Успіх!</string>
+    <string name="subscriptions_success_details">План було успішно придбано</string>
+    <string name="subscriptions_success_button">Продовжити</string>
+
 </resources>
 

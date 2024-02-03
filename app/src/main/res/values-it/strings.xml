@@ -568,4 +568,8 @@
     <string name="subscriptions_cancel_info">Puoi annullare il tuo piano in qualsiasi momento <u>nelle impostazioni</u></string>
     <string name="subscriptions_your_plan">Il Tuo Piano</string>
 
+    <string name="subscriptions_success_title">Successo!</string>
+    <string name="subscriptions_success_details">Il piano è stato acquistato con successo</string>
+    <string name="subscriptions_success_button">Continua</string>
+
 </resources>

@@ -552,4 +552,8 @@
     <string name="subscriptions_cancel_info">Vous pouvez annuler votre plan à tout moment <u>dans les paramètres</u></string>
     <string name="subscriptions_your_plan">Votre Plan</string>
 
+    <string name="subscriptions_success_title">Succès !</string>
+    <string name="subscriptions_success_details">Le plan a été acheté avec succès</string>
+    <string name="subscriptions_success_button">Continuer</string>
+
 </resources>
