@@ -9,5 +9,5 @@
     <!-- Incubating Features -->
     <bool name="config_is_organization_syncing_enabled">false</bool>
     <bool name="my_account_is_enabled">false</bool>
-    <bool name="config_is_new_subscription_model_enabled">true</bool>
+    <bool name="config_is_new_subscription_model_enabled">false</bool>
 </resources>
